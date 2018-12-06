@@ -4,4 +4,5 @@
 .classpath
 .metadata
 .DS_Store
-recommendations/WebContent/WEB-INF/classes
+WebContent/WEB-INF/classes
+*.class

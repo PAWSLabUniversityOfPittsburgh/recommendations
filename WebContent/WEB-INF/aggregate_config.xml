@@ -2,7 +2,7 @@
 <configuration>
     <!-- default values for db connection -->
 	<dbstring>jdbc:mysql://localhost:3307/aggregate</dbstring>
-	<dbuser>root</dbuser>
-	<dbpass></dbpass>
+	<dbuser>aggregate_user</dbuser>
+	<dbpass>aggregate_pass</dbpass>
     <relative-resources-path>resources</relative-resources-path>
 </configuration>

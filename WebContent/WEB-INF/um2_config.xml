@@ -2,8 +2,8 @@
 <configuration>
     <!-- default values for db connection -->
 	<dbstring>jdbc:mysql://localhost:3306/um2</dbstring>
-	<dbuser>root</dbuser>
-	<dbpass>roya6711</dbpass>
+	<dbuser>um2_user</dbuser>
+	<dbpass>um2_pass</dbpass>
 	<fastdbstring>jdbc:mysql://localhost:3306/fast</fastdbstring>
 	<!-- appIDs in UM2 -->
 	<webex>3</webex>

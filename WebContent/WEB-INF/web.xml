@@ -37,4 +37,13 @@
     <url-pattern>/GetKCSummary</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>rec.LogRecommendations</servlet-name>
+    <servlet-class>rec.LogRecommendations</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>rec.LogRecommendations</servlet-name>
+    <url-pattern>/LogRecommendations</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

@@ -29,23 +29,20 @@ public class BNGStaticData {
 
 	private void setupData(String rec_dbstring, String rec_dbuser, String rec_dbpass, String um2_dbstring,
 			String um2_dbuser, String um2_dbpass, String[] contentList) {
-		BNGDB bngDB;
-		// get list of coding exercises
-		bngDB = new BNGDB(um2_dbstring, um2_dbuser, um2_dbpass);
+		
+		BNGDB bngDB = new BNGDB(um2_dbstring, um2_dbuser, um2_dbpass); 
 		bngDB.openConnection();
+		// get list of coding exercises
 		codingList = bngDB.getCodingList(contentList);
-		bngDB.closeConnection();
 
 		// get list of challenges
-		bngDB = new BNGDB(um2_dbstring, um2_dbuser, um2_dbpass);
-		bngDB.openConnection();
 		challengeList = bngDB.getChallengeList(contentList);
-		bngDB.closeConnection();
 
 		// get list of examples
-		bngDB = new BNGDB(um2_dbstring, um2_dbuser, um2_dbpass);
-		bngDB.openConnection();
 		exampleList = bngDB.getExampleList(contentList);
+		
+		// get set challenges
+		setChallenges = bngDB.getSetChallenges(contentList);
 		bngDB.closeConnection();
 
 		// get kcs in items
@@ -53,13 +50,6 @@ public class BNGStaticData {
 		bngDB.openConnection();
 		itemKCs = bngDB.getItemKcs(contentList);
 		bngDB.closeConnection();
-		
-		// get set challenges
-		bngDB = new BNGDB(um2_dbstring, um2_dbuser, um2_dbpass);
-		bngDB.openConnection();
-		setChallenges = bngDB.getSetChallenges(contentList);
-		bngDB.closeConnection();
-		
 	}
 
 	public HashSet<String> getCodingList() {

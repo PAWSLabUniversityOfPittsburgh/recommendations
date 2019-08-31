@@ -70,7 +70,6 @@ public class GetRecommendations extends HttpServlet {
 			Map<String, List<String>> topicContents = getTopicContentMap(topicContentTxt);
 			String userContentProgressTxt = (String) jsonObject.get("userContentProgress");
 			Map<String, Double> usrContentProgress = getContentProgress(userContentProgressTxt);
-	        String updatesm = (String) jsonObject.get("updatesm");
 			//--end		
 				
 			String seq_id =  ""+System.nanoTime();
@@ -103,14 +102,13 @@ public class GetRecommendations extends HttpServlet {
 
 	    		//(b) get recommendations from the requested proactive method
 	    		if (proactive_method.toLowerCase().equals("bng")) {
-	    			itemKCEstimates = GetBNKCSummary.getItemKCEstimates(usr, grp, lastContentId,
-	    					lastContentResult, contentList, updatesm);
+	    			itemKCEstimates = GetBNKCSummary.getItemKCEstimates(usr, grp);
 	    			sequencingList = BNG.calculateSequenceRank(usr, grp, domain,
 	    					rec_cm.rec_dbstring, rec_cm.rec_dbuser, rec_cm.rec_dbpass,
 	    					um2_cm.dbstring, um2_cm.dbuser, um2_cm.dbpass,
 	    					contentList, lastContentId, 
 	    					proactive_max,
-	    					topicContents, usrContentProgress,itemKCEstimates, updatesm);    	
+	    					topicContents, usrContentProgress,itemKCEstimates);    	
 	    		}
 	    		else if (proactive_method.toLowerCase().equals("random")) {
 	    			sequencingList = Random.calculateSequenceRank(usr, grp, domain, 
@@ -189,8 +187,7 @@ public class GetRecommendations extends HttpServlet {
 					    if (res == 0){
 					    	if (reactive_method.toLowerCase().equals("pgsc")) {
 					    		if ( itemKCEstimates == null) 
-					    			itemKCEstimates = GetBNKCSummary.getItemKCEstimates(usr, grp, lastContentId,
-					    					lastContentResult, contentList, updatesm);
+					    			itemKCEstimates = GetBNKCSummary.getItemKCEstimates(usr, grp);
 					    		recList = PGSC.generateReactiveRecommendations(
 					    				seq_id, usr, grp, cid, sid, lastContentId, lastContentResult,
 					    				reactive_max, contentList, itemKCEstimates,
@@ -261,7 +258,7 @@ public class GetRecommendations extends HttpServlet {
 				output = ansLineJSON;
 			}
 			out.print(output);
-			//System.out.println(output);
+			System.out.println(output);
 			
 			//destroy objects
 			rec_cm = null; 	aggregate_cm = null; um2_cm = null;

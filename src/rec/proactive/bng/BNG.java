@@ -18,7 +18,7 @@ public class BNG {
 			String um2_dbpass, String[] contentList, String lastAct, int proactive_max,
 			Map<String, List<String>> topicContents,
 			Map<String, Double> usrContentProgress,
-			HashMap<String, Double> itemKCEstimates, String updatesm) {
+			HashMap<String, Double> itemKCEstimates) {
 		
 //		System.out.println("-----------------------------------------------");
 //		long startTime = System.currentTimeMillis();
@@ -70,7 +70,7 @@ public class BNG {
 //			System.out.println("***Topic: "+topic);
 			getTopicRecommendation(proactive_max, codingList, challengeList, exampleList, itemKCs,
 					usrContentProgress, itemKCEstimates, threshold, masteryThreshold, sequenceList,
-					topicContents.get(topic), lastAct, setChallenges, updatesm);
+					topicContents.get(topic), lastAct, setChallenges);
 
 		}
 //		System.out.println("******************");
@@ -85,7 +85,7 @@ public class BNG {
 			HashSet<String> exampleList, Map<String, List<String>> itemKCs, Map<String, Double> usrContentProgress,
 			HashMap<String, Double> itemKCEstimates, double threshold, double masteryThreshold,
 			ArrayList<ArrayList<String>> sequenceList, List<String> topicContents,
-			String lastAct, Map<String, HashSet<String>> setChallenges, String updatesm) {
+			String lastAct, Map<String, HashSet<String>> setChallenges) {
 
 		Map<String, double[]> coRankMap = new HashMap<String, double[]>();
 		Map<String, double[]> chRankMap = new HashMap<String, double[]>();
@@ -170,7 +170,7 @@ public class BNG {
 
 		addItemsToRecList(proactive_max, sequenceList, coRankMap, chRankMap,
 				coSortedMap, chSortedMap, exSortedMap, lastAct, threshold, masteryThreshold,
-				exampleList, itemKCEstimates, setChallenges, updatesm);
+				exampleList, itemKCEstimates, setChallenges);
 		
 		coRankMap.clear(); coRankMap = null; 
 		chRankMap.clear(); chRankMap = null;
@@ -184,7 +184,7 @@ public class BNG {
 			Map<String, double[]> coRankMap, Map<String, double[]> chRankMap, TreeMap<String, double[]> coSortedMap,
 			TreeMap<String, double[]> chSortedMap, TreeMap<String, double[]> exSortedMap, 
 			String lastAct, double threshold, double masteryThreshold, HashSet<String> exampleList, 
-			HashMap<String, Double> itemKCEstimates, Map<String, HashSet<String>> setChallenges, String updatesm) {
+			HashMap<String, Double> itemKCEstimates, Map<String, HashSet<String>> setChallenges) {
 		
 		int addedToRecList = 0; //we need it to keep track of number of items that we add to sequencing list
 		HashSet<String> addedChallenges = new HashSet<String>(); //keep track of added challenges

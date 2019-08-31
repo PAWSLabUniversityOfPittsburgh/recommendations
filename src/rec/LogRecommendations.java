@@ -63,7 +63,7 @@ public class LogRecommendations extends HttpServlet {
 			openDBConnections(rec_cm.rec_dbstring,rec_cm.rec_dbuser,rec_cm.rec_dbpass);
 			for (int i = 0; i < recArray.size(); i++) {
 				JSONObject jsonobject = (JSONObject) recArray.get(i);
-			    double recScore = (double) jsonobject.get("rec_score");
+			    double recScore = Double.parseDouble(String.valueOf(jsonobject.get("rec_score")));
 			    String actId = (String) jsonobject.get("id");
 			    int isRec = Integer.parseInt((String)jsonobject.get("isRecommended"));
 			    String topic = (String) jsonobject.get("topic");
